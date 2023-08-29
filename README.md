@@ -1,4 +1,5 @@
 # RestoApp- Desarrollo Mobile
+
 Proyecto para el módulo “Aplicaciones Móviles” (2023) - cohorte 2022
 
 El proyecto tiene como objetivo principal agilizar al cliente de un restaurante el proceso de pedido de comida, brindando una presentación más eficiente de la información de cada uno de los productos y menús que se ofrece tanto para delivery como para consumo en el local. Componentes claves de la aplicación:
