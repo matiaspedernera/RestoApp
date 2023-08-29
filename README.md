@@ -30,3 +30,5 @@ Planificación: Analizaremos las funcionalidades existentes en la versión web y
 Desarrollo: Implementaremos las características móviles de acuerdo con las funcionalides existentes en la web.
 
 Pruebas: se realizarán pruebas para garantizar la funcionalidad y experiencia de usuario.
+
+Repo anterior : https://github.com/matiaspedernera/proyectoISPC
