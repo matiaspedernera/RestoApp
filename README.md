@@ -2,7 +2,7 @@
 ## Proyecto para el módulo “Aplicaciones Móviles” (2023) - cohorte 2022
 
 Tablero de trabajo: [Ir al tablero](https://github.com/).
-Wiki del proyecto: [Ir a la Wiki](hhttps://github.com/matiaspedernera/RestoApp/Wiki)
+Wiki del proyecto: [Ir a la Wiki](hhttps://github.com/matiaspedernera/RestoApp/Wiki).
 
 ### Integrantes:
 
