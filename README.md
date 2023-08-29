@@ -1,18 +1,19 @@
 # RestoApp- Desarrollo Mobile
-Proyecto para el módulo “Aplicaciones Móviles” (2023) - cohorte 2022
+## Proyecto para el módulo “Aplicaciones Móviles” (2023) - cohorte 2022
 
-Tablero de trabajo: https://github.com/
-Wiki: hhttps://github.com/matiaspedernera/RestoApp/Wiki
-Integrantes:
+Tablero de trabajo: [Ir al tablero](https://github.com/).
+Wiki del proyecto: [Ir a la Wiki](hhttps://github.com/matiaspedernera/RestoApp/Wiki)
 
-1- Julio Fernando Vidaurre
-2- Matias Pedernera
-3- Ariel Peralta
-4- Florencia Belén Figueroa 
-5- Juan Ignacio Naveda
-6- Juan Pablo Driz
-7- Diego Gutiérrez
-8- Mauricio Arce
+### Integrantes:
+
+- Julio Fernando Vidaurre
+- Matias Pedernera
+- Ariel Peralta
+- Florencia Belén Figueroa
+- Juan Ignacio Naveda
+- Juan Pablo Driz
+- Diego Gutiérrez
+- Mauricio Arce
 
 El proyecto tiene como objetivo principal agilizar al cliente de un restaurante el proceso de pedido de comida, brindando una presentación más eficiente de la información de cada uno de los productos y menús que se ofrece tanto para delivery como para consumo en el local. Componentes claves de la aplicación:
 
