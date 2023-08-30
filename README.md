@@ -1,8 +1,8 @@
 # RestoApp- Desarrollo Mobile
 ## Proyecto para el módulo “Aplicaciones Móviles” (2023) - cohorte 2022
 
-- Tablero de trabajo: [Ir al tablero](https://github.com/).
-- Wiki del proyecto: [Ir a la Wiki](https://github.com/matiaspedernera/RestoApp/Wiki).
+- Tablero de trabajo: [Ir al tablero](https://github.com/users/matiaspedernera/projects/3).
+- Wiki del proyecto: [Ir a la Wiki](https://github.com/matiaspedernera/RestoApp/wiki).
 
 ### Integrantes:
 
