@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">RestoApp</string>
+
+    <string name="crea_cuenta">Crea una cuenta</string>
+    <string name="registrate">Registrate y únete a restoapp</string>
+    <string name="unirme">Unirme</string>
+    <string name="ya_tienes_cuenta">¿Ya tienes una cuenta?</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="ingresa_a_tu_cuenta">Ingresa a tu cuenta</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="no_tienes_cuenta">¿No tienes una cuenta?</string>
+    <string name="olvidaste_contraseña">¿Olvidaste tu contraseña?</string>
+    <string name="registrar">Registrar</string>
+
+
+
+</resources>
