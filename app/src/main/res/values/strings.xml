@@ -11,7 +11,8 @@
     <string name="no_tienes_cuenta">¿No tienes una cuenta?</string>
     <string name="olvidaste_contraseña">¿Olvidaste tu contraseña?</string>
     <string name="registrar">Registrar</string>
-
+    <string name="titulo_restoapp">RESTOAPP</string>
+    <string name="logo_empresa">Logo de la empresa</string>
 
 
 </resources>
