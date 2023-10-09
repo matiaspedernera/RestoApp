@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         // updateUI(currentUser);  Metodo que debemos crear en el caso de que el usuario ya este logueado
     }
-
+    //Metodo para registrar usuario con firebase (funciona pero se deberia rehacer)
     public void registrarUsuario(View view) {
 
         String correoString = correo.getText().toString();
