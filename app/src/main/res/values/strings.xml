@@ -17,17 +17,13 @@
     <string name="repita_contrasena">Repita contraseña</string>
 
 
-
-
-
-
     //Login Activity
     <string name="ingresa_a_tu_cuenta">Ingresa a tu cuenta</string>
     <string name="ingresar">Ingresar</string>
     <string name="no_tienes_cuenta">¿No tienes una cuenta?</string>
     <string name="olvidaste_contraseña">¿Olvidaste tu contraseña?</string>
     <string name="registrar">Registrar</string>
-    
+
     //SplashActivity
     <string name="titulo_restoapp">RESTOAPP</string>
     <string name="logo_empresa">Logo de la empresa</string>
@@ -36,6 +32,5 @@
     <string name="habla_con_nos">Habla directamente con los restaurantes</string>
     <string name="restoapp_todo_listo">Con RestoApp puedes tener todo listo para esa ocasión especial</string>
 
-    
-    
+
 </resources>
