@@ -16,7 +16,7 @@
     <string name="no_tienes_cuenta">¿No tienes una cuenta?</string>
     <string name="olvidaste_contraseña">¿Olvidaste tu contraseña?</string>
     <string name="registrar">Registrar</string>
-    
+
     //SplashActivity
     <string name="titulo_restoapp">RESTOAPP</string>
     <string name="logo_empresa">Logo de la empresa</string>
@@ -25,6 +25,9 @@
     <string name="habla_con_nos">Habla directamente con los restaurantes</string>
     <string name="restoapp_todo_listo">Con RestoApp puedes tener todo listo para esa ocasión especial</string>
 
-    
-    
+    //MisReservas Activity
+    <string name="title">Mis Reservas</string>
+    <string name="subtitle">Revisa tus reservas vigentes y pasadas</string>
+    <string name="btn_add_reservation">+</string>
+
 </resources>
