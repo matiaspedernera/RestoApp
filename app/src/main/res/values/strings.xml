@@ -9,6 +9,13 @@
     <string name="crea_cuenta">Crea una cuenta</string>
     <string name="registrate">Registrate y únete a restoapp</string>
     <string name="ya_tienes_cuenta">¿Ya tienes una cuenta?</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="dni">DNI</string>
+    <string name="correo">Correo</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="repita_contrasena">Repita contraseña</string>
+
 
     //Login Activity
     <string name="ingresa_a_tu_cuenta">Ingresa a tu cuenta</string>
