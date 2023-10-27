@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RestoApp"
         tools:targetApi="31">
-
+        <activity
+            android:name=".DishesActivity"
+            android:exported="false" />
         <activity
             android:name=".activity_redes"
             android:exported="false" />

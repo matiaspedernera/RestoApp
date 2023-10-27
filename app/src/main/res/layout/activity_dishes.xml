@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C8BABA"
+    android:backgroundTint="#DFDCDC"
+    tools:context=".DishesActivity">
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="344dp"
+        android:layout_height="115dp"
+        android:background="@drawable/rounded_button_2"
+        android:contentDescription="Boton para contactos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.886"
+        app:srcCompat="@drawable/contactanos" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="341dp"
+        android:layout_height="108dp"
+        android:background="@drawable/rounded_button_2"
+        android:contentDescription="boton para busqueda"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.686"
+        app:srcCompat="@drawable/cerca" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="341dp"
+        android:layout_height="102dp"
+        android:background="@drawable/rounded_button_2"
+        android:contentDescription="boton para reservar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/reservar" />
+
+    <TextView
+        android:id="@+id/textView11"
+        style="@style/Widget.AppCompat.TextView"
+        android:layout_width="207dp"
+        android:layout_height="32dp"
+        android:text="Explora"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.41" />
+
+    <ViewFlipper
+        android:id="@+id/v_flipper"
+        android:layout_width="340dp"
+        android:layout_height="103dp"
+        android:layout_marginRight="48dp"
+        android:background="@drawable/slider"
+
+        android:backgroundTint="#FEFEFE"
+
+        android:isScrollContainer="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.275"
+        tools:ignore="MissingConstraints"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textView10"
+        style="@style/Widget.AppCompat.TextView"
+        android:layout_width="207dp"
+        android:layout_height="32dp"
+        android:text="Categorias"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.201" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/action_search"
+        android:layout_width="338dp"
+        android:layout_height="41dp"
+        android:layout_marginRight="52dp"
+        android:background="@drawable/slider"
+        android:backgroundTint="#FEFEFE"
+        android:queryHint="Buscar por nombre"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.133" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="217dp"
+        android:layout_height="29dp"
+        android:layout_marginRight="172dp"
+        android:text="Encuentra tus platos favoritos "
+        android:textColor="#8C8989"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.079" />
+
+    <TextView
+        android:id="@+id/textView8"
+        style="@style/Widget.AppCompat.TextView"
+        android:layout_width="253dp"
+        android:layout_height="50dp"
+        android:text="Hola Nacho !"
+        android:textSize="36sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.007" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
