@@ -36,5 +36,15 @@
     <string name="title">Mis Reservas</string>
     <string name="subtitle">Revisa tus reservas vigentes y pasadas</string>
     <string name="btn_add_reservation">+</string>
+    
+    //Dialog Agregar Reserva
+    <string name="confirm_button">Confirmar</string>
+    <string name="btn_close">x</string>
+    <string name="title_create_reservation">Reservar</string>
+    <string name="choose_date">Elegir fecha y hora</string>
+    <string name="number_of_people">Cantidad de personas</string>
+    <string name="type_of_reservation">Tipo de reserva</string>
+    <string name="select_table">Seleccionar mesa</string>
+    <string name="reservation_comment">Escribe alguna observación...</string>
 
 </resources>
