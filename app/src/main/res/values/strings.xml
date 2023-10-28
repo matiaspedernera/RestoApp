@@ -36,7 +36,7 @@
     <string name="title">Mis Reservas</string>
     <string name="subtitle">Revisa tus reservas vigentes y pasadas</string>
     <string name="btn_add_reservation">+</string>
-    
+
     //Dialog Agregar Reserva
     <string name="confirm_button">Confirmar</string>
     <string name="btn_close">x</string>
