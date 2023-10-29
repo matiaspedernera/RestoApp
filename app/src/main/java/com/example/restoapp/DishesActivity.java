@@ -1,13 +1,19 @@
 package com.example.restoapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 
 public class DishesActivity extends AppCompatActivity {
@@ -26,6 +32,31 @@ public class DishesActivity extends AppCompatActivity {
         for (int image : images) {
             flipperImages(image);
         }
+
+        //Para el Menu inferior de navegacion
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.navigation_dishes) {
+                    startActivity(new Intent(getApplicationContext(), DishesActivity.class));
+                    bottomNavigationView.getMenu().getItem(0).setChecked(false);
+
+                    return true;
+                } else if (item.getItemId() == R.id.navigation_reservas) {
+                    startActivity(new Intent(getApplicationContext(), ReservationsActivity.class));
+                    return true;
+                } else if (item.getItemId() == R.id.navigation_profile) {
+                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    return true;
+                } else {
+                    return false;
+                }
+
+            }
+        });
+
+
     }
 
     public void flipperImages(int image) {

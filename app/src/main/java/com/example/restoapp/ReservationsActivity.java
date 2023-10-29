@@ -1,14 +1,20 @@
 package com.example.restoapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class ReservationsActivity extends AppCompatActivity {
 
@@ -25,6 +31,29 @@ public class ReservationsActivity extends AppCompatActivity {
                 mostrarDialogAgregarReserva();
             }
         });
+
+        //Para el Menu inferior de navegacion
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.navigation_dishes) {
+                    startActivity(new Intent(getApplicationContext(), DishesActivity.class));
+
+                    return true;
+                } else if (item.getItemId() == R.id.navigation_reservas) {
+                    startActivity(new Intent(getApplicationContext(), ReservationsActivity.class));
+                    return true;
+                } else if (item.getItemId() == R.id.navigation_profile) {
+                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    return true;
+                } else {
+                    return false;
+                }
+
+            }
+        });
+
     }
 
     // Método para mostrar el Dialog
