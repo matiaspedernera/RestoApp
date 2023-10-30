@@ -39,27 +39,8 @@ public class ProfileActivity extends AppCompatActivity {
             startActivityForResult(changeImageIntent, REQUEST_IMAGE_CHANGE);
         });
 
-        //Para el Menu inferior de navegacion
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.navigation_dishes) {
-                    startActivity(new Intent(getApplicationContext(), DishesActivity.class));
 
-                    return true;
-                } else if (item.getItemId() == R.id.navigation_reservas) {
-                    startActivity(new Intent(getApplicationContext(), ReservationsActivity.class));
-                    return true;
-                } else if (item.getItemId() == R.id.navigation_profile) {
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    return true;
-                } else {
-                    return false;
-                }
 
-            }
-        });
 
 
     }

@@ -46,5 +46,7 @@
     <string name="type_of_reservation">Tipo de reserva</string>
     <string name="select_table">Seleccionar mesa</string>
     <string name="reservation_comment">Escribe alguna observación...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
