@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#C8BABA"
+    android:backgroundTint="#DFDCDC"
     tools:context=".ReservasFragment">
 
     <LinearLayout
@@ -23,8 +25,9 @@
             android:layout_marginTop="32dp"
             android:fontFamily="@font/libre_baskerville_bold"
             android:text="@string/title"
+            android:layout_marginStart="24dp"
             android:textColor="#040C22"
-            android:textSize="24sp"
+            android:textSize="34sp"
             tools:ignore="MissingConstraints"
             tools:text="@string/title" />
 
