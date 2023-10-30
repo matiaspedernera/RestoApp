@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">RestoApp</string>
+
+    //Strings comunes
+    <string name="unirme">Unirme</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+
+    //Main Activity
+    <string name="crea_cuenta">Crea una cuenta</string>
+    <string name="registrate">Registrate y únete a restoapp</string>
+    <string name="ya_tienes_cuenta">¿Ya tienes una cuenta?</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="dni">DNI</string>
+    <string name="correo">Correo</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="repita_contrasena">Repita contraseña</string>
+
+
+    //Login Activity
+    <string name="ingresa_a_tu_cuenta">Ingresa a tu cuenta</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="no_tienes_cuenta">¿No tienes una cuenta?</string>
+    <string name="olvidaste_contraseña">¿Olvidaste tu contraseña?</string>
+    <string name="registrar">Registrar</string>
+
+    //SplashActivity
+    <string name="titulo_restoapp">RESTOAPP</string>
+    <string name="logo_empresa">Logo de la empresa</string>
+
+    //OnBoarding Activity
+    <string name="habla_con_nos">Habla directamente con los restaurantes</string>
+    <string name="restoapp_todo_listo">Con RestoApp puedes tener todo listo para esa ocasión especial</string>
+
+    //MisReservas Activity
+    <string name="title">Mis Reservas</string>
+    <string name="subtitle">Revisa tus reservas vigentes y pasadas</string>
+    <string name="btn_add_reservation">+</string>
+
+    //Dialog Agregar Reserva
+    <string name="confirm_button">Confirmar</string>
+    <string name="btn_close">x</string>
+    <string name="title_create_reservation">Reservar</string>
+    <string name="choose_date">Elegir fecha y hora</string>
+    <string name="number_of_people">Cantidad de personas</string>
+    <string name="type_of_reservation">Tipo de reserva</string>
+    <string name="select_table">Seleccionar mesa</string>
+    <string name="reservation_comment">Escribe alguna observación...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
