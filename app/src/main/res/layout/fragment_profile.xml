@@ -6,7 +6,7 @@
     android:background="#C8BABA"
     android:backgroundTint="#DFDCDC"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".PerfilFragment">
+    tools:context=".ProfileFragment">
 
     <TextView
         android:id="@+id/textView4"
