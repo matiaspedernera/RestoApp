@@ -3,46 +3,31 @@ package com.example.restoapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import android.widget.ImageView;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+import androidx.fragment.app.FragmentManager;
 
 public class ProfileActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CHANGE = 1;
-    private ImageView profileImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        profileImageView = findViewById(R.id.profile_image_view);
-
-        // Botón para cambiar la imagen de perfil
         Button changeImageButton = findViewById(R.id.change_image_button);
 
-        changeImageButton.setOnClickListener(v -> {
-            // Crea un Intent para abrir la actividad PhotoChangeActivity
-            Intent changeImageIntent = new Intent(ProfileActivity.this, PhotoChangeActivity.class);
-
-            // Inicia la actividad PhotoChangeActivity para cambiar la imagen de perfil
-            startActivityForResult(changeImageIntent, REQUEST_IMAGE_CHANGE);
+        changeImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Crea un Intent para abrir la actividad PhotoChangeActivity
+                Intent changeImageIntent = new Intent(ProfileActivity.this, PhotoChangeActivity.class);
+                startActivityForResult(changeImageIntent, REQUEST_IMAGE_CHANGE);
+            }
         });
-
-
-
-
-
     }
 
     @Override
@@ -51,10 +36,26 @@ public class ProfileActivity extends AppCompatActivity {
 
         if (requestCode == REQUEST_IMAGE_CHANGE && resultCode == RESULT_OK && data != null) {
             // Obtiene la URI de la imagen seleccionada desde PhotoChangeActivity
-            Uri selectedImageUri = data.getData();
+            String selectedImageUriString = data.getStringExtra("imageUri");
+            Uri selectedImageUri = Uri.parse(selectedImageUriString);
 
-            // Muestra la imagen en profileImageView
-            profileImageView.setImageURI(selectedImageUri);
+            // Carga el fragmento ProfileFragment y pasa la URI de la imagen
+            loadProfileFragment(selectedImageUri);
         }
     }
+
+    private void loadProfileFragment(Uri selectedImageUri) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        ProfileFragment profileFragment = (ProfileFragment) fragmentManager.findFragmentByTag("ProfileFragment");
+
+        if (profileFragment == null) {
+            profileFragment = new ProfileFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, profileFragment, "ProfileFragment")
+                    .commit();
+        }
+
+        profileFragment.updateProfileImage(selectedImageUri);
+    }
 }
+

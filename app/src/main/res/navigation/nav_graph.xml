@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/page_perfil"
-        android:name="com.example.restoapp.PerfilFragment"
-        tools:layout="@layout/fragment_perfil"/>
+        android:name="com.example.restoapp.ProfileFragment"
+        tools:layout="@layout/fragment_profile"/>
 
 </navigation>
