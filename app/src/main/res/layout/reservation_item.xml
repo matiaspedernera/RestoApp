@@ -3,10 +3,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
     android:background="@drawable/rounded_background"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:layout_marginBottom="8dp">
+    android:padding="16dp">
 
 
     <TextView
@@ -25,9 +25,9 @@
             android:id="@+id/textViewPersonas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="106dp"
             android:text="Personas: "
-            android:textSize="16sp"
-            android:layout_marginRight="106dp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textViewFecha"
