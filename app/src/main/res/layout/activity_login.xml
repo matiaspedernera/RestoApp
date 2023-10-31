@@ -2,6 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#C8BABA"
+    android:backgroundTint="#DFDCDC"
     android:layout_width="match_parent"
     android:layout_height="match_parent"    tools:context=".MainActivity">
 
@@ -12,6 +14,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto"
         android:text="@string/ingresa_a_tu_cuenta"
+        android:textColor="#616161"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,14 +42,15 @@
         android:id="@+id/nombreEditText"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginVertical="100dp"
         android:background="@drawable/edittext_rounded_bg"
         android:ems="10"
+        android:autofillHints="name"
         android:enabled="true"
         android:fontFamily="@font/roboto"
-        android:hint="Nombre"
+        android:hint="@string/nombre"
         android:inputType="text"
-        android:paddingLeft="8dp"
+        android:paddingHorizontal="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,16 +64,17 @@
         android:background="@drawable/edittext_rounded_bg"
         android:ems="10"
         android:fontFamily="@font/roboto"
-        android:hint="Contraseña"
+        android:hint="@string/contrasenia"
+        android:autofillHints="password"
         android:inputType="textPassword"
-        android:paddingLeft="8dp"
+        android:paddingHorizontal="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombreEditText" />
 
 
 
-<!--    android:onClick="registrarUsuario"-->
+    <!--    android:onClick="registrarUsuario"-->
     <Button
         android:id="@+id/IngresarBtn"
         android:layout_width="137dp"
@@ -93,10 +98,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
-        android:clickable="true"
         android:fontFamily="@font/roboto"
-        android:onClick="handleYaTienesCuentaClick"
         android:text="@string/no_tienes_cuenta"
+        android:textColor="#616161"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -125,7 +129,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/roboto"
         android:text="@string/olvidaste_contraseña"
-        android:textColor="@color/principal_naranja"
+        android:textColor="#D84315"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

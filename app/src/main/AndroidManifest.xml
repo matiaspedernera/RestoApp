@@ -27,9 +27,7 @@
         <activity
             android:name=".activity_redes"
             android:exported="false" />
-        <activity
-            android:name=".ReservationsActivity"
-            android:exported="false" />
+
         <activity
             android:name=".OnBoardingActivity"
             android:exported="false" />
