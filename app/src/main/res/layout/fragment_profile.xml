@@ -6,14 +6,14 @@
     android:background="#C8BABA"
     android:backgroundTint="#DFDCDC"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ProfileFragment">
+    tools:context=".PerfilFragment">
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="248dp"
-        android:layout_height="59dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/libre_baskerville_bold"
-        android:text="Mi perfil"
+        android:text="@string/mi_perfil"
         android:textColor="#2C2C2C"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,11 +25,11 @@
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="362dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Actualiza la informacion de tu perfil"
+        android:text="@string/actualiza_info_perfil"
         android:textSize="20sp"
-        android:fontFamily="@font/roboto_bold"
+        android:fontFamily="@font/roboto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.326"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,22 +42,23 @@
         android:layout_height="144dp"
         android:src="@drawable/image9"
         android:layout_marginTop="10dp"
+        android:contentDescription="@string/avatar_usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView12"
-         />
+        />
 
     <Button
         android:id="@+id/change_image_button"
         android:layout_width="142dp"
-        android:layout_height="26dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
-        android:background="#F1F1F1"
-        android:backgroundTint="#F1F1F1"
-        android:text="Cambiar foto"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/cambiar_foto"
+        android:background="@drawable/rounded_button_2"
         android:textAllCaps="false"
-        android:textColor="#F44336"
+        android:textColor="#000011"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,10 +66,10 @@
 
     <TextView
         android:id="@+id/textViewName2"
-        android:layout_width="227dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Ejemplo1234@gmail.com"
+        android:text="@string/correo_ejemplo"
         android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -79,41 +80,43 @@
 
     <TextView
         android:id="@+id/textViewEmail"
-        android:layout_width="230dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:layout_marginTop="5dp"
-        android:text="DNI 35345543"
+        android:textColor="#333333"
+        android:text="@string/dni_ejemplo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewName2"
-         />
+        />
 
     <EditText
         android:id="@+id/editTextText"
         android:layout_width="339dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         android:background="@drawable/rounded_button_2"
         android:ems="10"
         android:inputType="text"
-        android:text="Diego Jose"
-        android:paddingStart="7dp"
+        android:hint="@string/nombre"
+        android:paddingHorizontal="7dp"
+        android:autofillHints="name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.537" />
+        />
 
     <EditText
         android:id="@+id/editTextText2"
         android:layout_width="339dp"
-        android:layout_height="44dp"
-        android:paddingStart="7dp"
+        android:layout_height="48dp"
+        android:paddingHorizontal="7dp"
+        android:autofillHints="name"
         android:background="@drawable/rounded_button_2"
         android:ems="10"
         android:inputType="text"
-        android:text="Martinez"
+        android:hint="@string/apellido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextText" />
@@ -126,7 +129,7 @@
         android:background="@drawable/rounded_button_2"
         android:backgroundTint="#F16333"
         android:fontFamily="@font/roboto_bold"
-        android:text="Actualizar"
+        android:text="@string/actualizar"
         android:textAllCaps="false"
         android:textColor="#F9F9F9"
         android:textSize="18sp"
@@ -141,7 +144,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_button_2"
         android:fontFamily="@font/roboto_bold"
-        android:text="Cerrar Sesion"
+        android:text="@string/cerrar_sesion"
         android:textAllCaps="false"
         android:textColor="#F16333"
         android:textSize="18sp"
