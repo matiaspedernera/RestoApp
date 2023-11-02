@@ -17,13 +17,15 @@
 
         <activity
             android:name=".ProfileActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".PhotoChangeActivity"
             android:exported="false" />
         <activity
             android:name=".DishesActivity"
-            android:exported="false" />
+            android:theme="@style/MenuStyle"
+            android:exported="false"/>
         <activity
             android:name=".activity_redes"
             android:exported="false" />

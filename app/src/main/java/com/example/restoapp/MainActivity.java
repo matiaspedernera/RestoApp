@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.restoapp.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText correo;
     private EditText contrasena;
     private EditText contrasenaConfirmacion;
+    private EditText nombreEditText; // Agrega la referencia al EditText nombreEditText
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         correo = findViewById(R.id.correoEditText);
         contrasena = findViewById(R.id.contrasenaEditText);
         contrasenaConfirmacion = findViewById(R.id.contrasenaConfirmaEditText);
+        nombreEditText = findViewById(R.id.nombreEditText); // Asigna la referencia a nombreEditText
     }
 
     public void registrarUsuario(View view) {
@@ -48,7 +49,12 @@ public class MainActivity extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Toast.makeText(getApplicationContext(), "Usuario Creado con éxito", Toast.LENGTH_LONG).show();
                                 Log.d("RegistroExitoso", "Usuario registrado: " + user.getEmail());
+
                                 // Puedes redirigir al usuario a la siguiente actividad aquí
+                                String nombreIngresado = nombreEditText.getText().toString(); // Obtiene el nombre ingresado
+                                Intent intent = new Intent(MainActivity.this, DishesActivity.class);
+                                intent.putExtra("nombreUsuario", nombreIngresado); // Pasa el nombre a la siguiente actividad
+                                startActivity(intent);
                             } else {
                                 Toast.makeText(getApplicationContext(), "Error al crear usuario: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 Log.e("RegistroError", "Error al registrar usuario: " + task.getException().getMessage());
@@ -56,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
         } else {
-            Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+            int Toast_SHORT = 0;
+            Toast.makeText(this, "Las contraseñas no coinciden", Toast_SHORT).show();
         }
     }
 

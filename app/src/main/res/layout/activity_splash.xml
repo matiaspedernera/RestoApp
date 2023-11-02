@@ -39,7 +39,7 @@
         android:fontFamily="@font/inter_medium"
         android:text="@string/titulo_restoapp"
         android:textColor="#FFFFFF"
-        android:textSize="34sp"
+        android:textSize="29sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

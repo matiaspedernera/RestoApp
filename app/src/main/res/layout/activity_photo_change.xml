@@ -14,7 +14,7 @@
         android:background="@drawable/rounded_button_2"
         android:backgroundTint="#F16333"
         android:text="@string/confirmar"
-        android:textColor="#212121"
+        android:textColor="#F9F9F9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

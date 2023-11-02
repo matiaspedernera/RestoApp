@@ -91,13 +91,15 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints="emailAddress"
         android:background="@drawable/edittext_rounded_bg"
         android:ems="10"
         android:hint="@string/correo"
-        android:autofillHints="emailAddress"
         android:inputType="text"
         android:paddingHorizontal="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dniEditText" />
 
@@ -121,13 +123,15 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:layout_marginVertical="10dp"
+        android:layout_marginTop="12dp"
+        android:autofillHints="password"
         android:background="@drawable/edittext_rounded_bg"
         android:ems="10"
         android:hint="@string/repita_contrasena"
-        android:autofillHints="password"
         android:inputType="textPassword"
         android:paddingHorizontal="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contrasenaEditText" />
 

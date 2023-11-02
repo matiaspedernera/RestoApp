@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,8 +51,9 @@ public class LoginActivity extends AppCompatActivity {
                                         FirebaseUser user = mAuth.getCurrentUser();
                                         Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
 
-                                        // Redirigir al usuario a la actividad principal o a donde necesites
+                                        // Redirigir al usuario a la actividad principal
                                         Intent intent = new Intent(LoginActivity.this, DishesActivity.class);
+                                        intent.putExtra("username", username); // Pasar el nombre de usuario a la siguiente actividad
                                         startActivity(intent);
                                     } else {
                                         Toast.makeText(LoginActivity.this, "Error en el inicio de sesión: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -63,3 +65,4 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 }
+

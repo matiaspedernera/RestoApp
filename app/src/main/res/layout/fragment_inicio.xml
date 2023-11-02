@@ -16,9 +16,11 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/libre_baskerville_bold"
-        android:text="@string/saludo"
+        android:text="Hola"
         android:textSize="36sp"
         android:textStyle="normal|bold"
+        android:visibility="visible"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
