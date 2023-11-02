@@ -14,7 +14,7 @@
         android:background="@drawable/rounded_button_2"
         android:backgroundTint="#F16333"
         android:text="@string/confirmar"
-        android:textColor="#212121"
+        android:textColor="#F9F9F9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -136,16 +136,16 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/volver"
+        android:layout_width="26dp"
+        android:layout_height="30dp"
         android:contentDescription="@string/volver"
+        android:src="@drawable/volver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintVertical_bias="0.037" />
 
     <TextView
         android:id="@+id/textView14"

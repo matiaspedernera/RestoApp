@@ -23,6 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".DishesActivity"
+            android:theme="@style/MenuStyle"
             android:exported="false" />
         <activity
             android:name=".activity_redes"
