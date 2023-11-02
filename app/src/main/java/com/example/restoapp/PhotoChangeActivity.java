@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PhotoChangeActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_PICK = 1;
     private ImageView imageselect;
+    private  ImageView btn_atras;
+    private Button confirmarBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +32,10 @@ public class PhotoChangeActivity extends AppCompatActivity {
         ImageView imageView8 = findViewById(R.id.imageView8);
         ImageView imageView9 = findViewById(R.id.imageView9);
         ImageView imageView10 = findViewById(R.id.imageView10);
+
+
+        btn_atras = findViewById(R.id.imageButton2);
+        confirmarBtn = findViewById(R.id.confirmarBtn);
 
         // Configura un OnClickListener para imageView3
         imageView3.setOnClickListener(new View.OnClickListener() {
@@ -101,8 +107,6 @@ public class PhotoChangeActivity extends AppCompatActivity {
             }
         });
 
-        Button confirmarBtn = findViewById(R.id.confirmarBtn);
-
         confirmarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,10 +116,18 @@ public class PhotoChangeActivity extends AppCompatActivity {
                             + getResources().getResourceEntryName(imageselect.getId()));
 
                     // Envía la URI de la imagen a la actividad ProfileActivity
-                    Intent intent = new Intent(PhotoChangeActivity.this, ProfileActivity.class);
+                    Intent intent = new Intent(PhotoChangeActivity.this, DishesActivity.class);
                     intent.putExtra("imageUri", selectedImageUri.toString());
+                    intent.putExtra("showThirdFragment", true); // Indicador para mostrar el tercer fragmento
                     startActivity(intent);
                 }
+            }
+        });
+
+        btn_atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
