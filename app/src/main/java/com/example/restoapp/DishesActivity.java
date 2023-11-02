@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
@@ -34,6 +35,20 @@ public class DishesActivity extends AppCompatActivity {
 //        for (int image : images) {
 //            flipperImages(image);
 //        }
+
+
+        boolean showThirdFragment = getIntent().getBooleanExtra("showThirdFragment", false);
+        if (showThirdFragment) {
+            // Obtén el controlador de navegación
+            NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+
+            if (navHostFragment != null) {
+                NavController navController = navHostFragment.getNavController();
+
+                // Navega al tercer fragmento
+                navController.navigate(R.id.page_perfil);
+            }
+        }
 
         setupNavigation();
 
