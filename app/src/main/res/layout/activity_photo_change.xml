@@ -138,29 +138,26 @@
         android:id="@+id/imageButton2"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@drawable/volver"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
         android:contentDescription="@string/volver"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        android:src="@drawable/volver"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="289dp"
         android:layout_height="41dp"
+        android:layout_marginTop="40dp"
         android:text="@string/cambiar_foto_de_perfil"
         android:textColor="#1E1F22"
-        android:textSize="24sp"
+        android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.573"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintStart_toEndOf="@+id/imageButton2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.037"
         tools:ignore="TextSizeCheck" />
 
     <ImageButton
