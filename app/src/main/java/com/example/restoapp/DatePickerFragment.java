@@ -33,7 +33,6 @@ public class DatePickerFragment extends DialogFragment {
             }
         }, year, month, day);
 
-        s
     }
 
     public void setDateListener(DateSelectionListener listener) {
