@@ -112,8 +112,9 @@ public class PhotoChangeActivity extends AppCompatActivity {
                             + getResources().getResourceEntryName(imageselect.getId()));
 
                     // Envía la URI de la imagen a la actividad ProfileActivity
-                    Intent intent = new Intent(PhotoChangeActivity.this, ProfileActivity.class);
+                    Intent intent = new Intent(PhotoChangeActivity.this, DishesActivity.class);
                     intent.putExtra("imageUri", selectedImageUri.toString());
+                    intent.putExtra("showThirdFragment", true); // Indicador para mostrar el tercer fragmento
                     startActivity(intent);
                 }
             }
