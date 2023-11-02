@@ -48,7 +48,7 @@
         android:autofillHints="name"
         android:enabled="true"
         android:fontFamily="@font/roboto"
-        android:hint="@string/correo"
+        android:hint="@string/nombre"
         android:inputType="text"
         android:paddingHorizontal="8dp"
         app:layout_constraintEnd_toEndOf="parent"
