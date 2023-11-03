@@ -23,6 +23,7 @@ import com.example.restoapp.controladores.ReservationBD;
 import com.example.restoapp.modelos.Reservation;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ReservasFragment extends Fragment implements DatePickerFragment.DateSelectionListener, TimePickerFragment.TimeSelectionListener{
@@ -89,6 +90,7 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
                 bolsa.putInt("number_of_people", reservation.getNumber_of_people());
                 bolsa.putString("dateAndTime", reservation.getDateAndTime());
                 bolsa.putLong("created", reservation.getCreated().getTime());
+                bolsa.putString("type",reservation.getType());
                 bolsa.putInt("table", reservation.getTable());
                 bolsa.putString("observations", reservation.getObservations());
                 bolsa.putString("status", reservation.getStatus());
@@ -200,8 +202,9 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
                 Log.d("ReservasFragment", "Fecha seleccionada: " + selectedYear + "-" + selectedMonth + "-" + selectedDay);
                 Log.d("ReservasFragment", "Hora seleccionada: " + selectedHour + ":" + selectedMinute);
 
-                Reservation newReservation = new Reservation(0, numberOfPeople, dateAndTime,
-                        typeOfReservation,  "observacion",selectedTable, "Pendiente");
+                Date createdDate = new Date(); // Aquí deberías obtener la fecha actual o la que corresponda
+                Reservation newReservation = new Reservation(0, numberOfPeople, dateAndTime,createdDate,
+                        typeOfReservation,  selectedTable,"observacion", "Pendiente");
 
                 // Agregamos la reserva a la base de datos
                 Log.d("ReservasFragment", "Valores de newReservation: " + newReservation.toString());

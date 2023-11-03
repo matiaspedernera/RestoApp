@@ -10,6 +10,7 @@ import android.util.Log;
 import com.example.restoapp.modelos.Reservation;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ReservationBD extends SQLiteOpenHelper implements IReservationBD {
@@ -58,17 +59,21 @@ public class ReservationBD extends SQLiteOpenHelper implements IReservationBD {
 
         if (cursor != null) {
             cursor.moveToFirst();
+            long createdMillis = cursor.getLong(3); // Suponiendo que la fecha está en la columna 3
+            Date createdDate = new Date(createdMillis);
             Reservation reservation = new Reservation(
                     cursor.getInt(0),
                     cursor.getInt(1),
                     cursor.getString(2),
-                    cursor.getString(3),
+                    createdDate,
                     cursor.getString(4),
                     cursor.getInt(5),
-                    cursor.getString(6)
+                    cursor.getString(6),
+                    cursor.getString(7)
             );
             cursor.close();
             return reservation;
+
         }
 
         return null;
@@ -87,10 +92,11 @@ public class ReservationBD extends SQLiteOpenHelper implements IReservationBD {
                         cursor.getInt(0),
                         cursor.getInt(1),
                         cursor.getString(2),
-                        cursor.getString(3),
+                        new Date(cursor.getLong(3)),
                         cursor.getString(4),
                         cursor.getInt(5),
-                        cursor.getString(6)
+                        cursor.getString(6),
+                        cursor.getString(7)
                 );
                 reserveList.add(reservation);
             } while (cursor.moveToNext());
