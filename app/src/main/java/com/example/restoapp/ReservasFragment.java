@@ -25,7 +25,7 @@ import com.example.restoapp.modelos.Reservation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReservasFragment extends Fragment implements DatePickerFragment.DateSelectionListener, TimePickerFragment.TimeSelectionListener{
+public class ReservasFragment extends Fragment implements DatePickerFragment.DateSelectionListener, TimePickerFragment.TimeSelectionListener {
     private ListView listView;
     private ArrayList<Integer> idReserve;
     private ReservationBD reservationBD;
@@ -35,22 +35,21 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
     private int selectedDay;
     private int selectedHour;
     private int selectedMinute;
-
-
+    private ReservationAdapter adapter;
+    private List<Reservation> reservationList;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context = context;
         reservationBD = new ReservationBD(context);
-        Log.d("ReservasFragment", "reservationBD se inicializó correctamente");
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = requireContext();
         reservationBD = new ReservationBD(context);
+        reservationList = new ArrayList<>();
     }
 
     @Override
@@ -58,7 +57,12 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
         View view = inflater.inflate(R.layout.fragment_reservas, container, false);
         listView = view.findViewById(R.id.reservation_list);
 
-        fillListView(view);
+        idReserve = new ArrayList<Integer>();
+        reservationList = new ArrayList<>();
+        adapter = new ReservationAdapter(requireActivity(), R.layout.reservation_item, reservationList);
+        listView.setAdapter(adapter);
+
+        fillListView();
 
         Button botonAgregarReserva = view.findViewById(R.id.botonAgregarReserva);
         botonAgregarReserva.setOnClickListener(new View.OnClickListener() {
@@ -71,29 +75,10 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
         return view;
     }
 
-    private void fillListView(View view) {
-        idReserve = new ArrayList<Integer>();
-
-        List<Reservation> reservationList = reservationBD.lista();
-
-        ReservationAdapter adapter = new ReservationAdapter(requireActivity(), R.layout.reservation_item, reservationList);
-
-        listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Reservation reservation = reservationList.get(i);
-                Bundle bolsa = new Bundle();
-                bolsa.putInt("id", reservation.getId());
-                bolsa.putInt("number_of_people", reservation.getNumber_of_people());
-                bolsa.putString("dateAndTime", reservation.getDateAndTime());
-                bolsa.putLong("created", reservation.getCreated().getTime());
-                bolsa.putInt("table", reservation.getTable());
-                bolsa.putString("observations", reservation.getObservations());
-                bolsa.putString("status", reservation.getStatus());
-            }
-        });
+    private void fillListView() {
+        reservationList.clear();
+        reservationList.addAll(reservationBD.lista());
+        adapter.notifyDataSetChanged();
     }
 
     private void mostrarDialogAgregarReserva() {
@@ -208,7 +193,7 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
                 Log.d("ReservasFragment", "newReservation es null: " + (newReservation == null));
 
                 reservationBD.agregar(newReservation);
-
+                actualizarListaReservas();
                 dialog.dismiss();
             }
         });
@@ -244,6 +229,11 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
         };
 
 
+    }
+
+    private void actualizarListaReservas() {
+        // Actualiza la lista de reservas desde la base de datos y notifica al adaptador
+        fillListView();
     }
 
     private void showTimePickerDialog() {
