@@ -12,15 +12,12 @@ public class Reservation {
     private String observations;
     private String status;
 
-    public Reservation (int anInt, int cursorInt, String string, String cursorString, String s, int i, String string1, String cursorString1){
 
-    }
 
-    public Reservation(int id, int number_of_people, String dateAndTime, String type, int table, String observations, String status) {
+    public Reservation(int id, int number_of_people, String dateAndTime, String type,  String observations, int table,String status) {
         this.id = id;
         this.number_of_people = number_of_people;
         this.dateAndTime = dateAndTime;
-        this.created = new Date();
         this.type = type;
         this.table = table;
         this.observations = observations;
