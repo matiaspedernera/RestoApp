@@ -1,6 +1,5 @@
 package com.example.restoapp;
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -12,20 +11,14 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
-import com.example.restoapp.R;
-import com.example.restoapp.ReservationAdapter;
 import com.example.restoapp.controladores.ReservationBD;
-import com.example.restoapp.controladores.SelectListener;
 import com.example.restoapp.modelos.Reservation;
 
 import java.util.ArrayList;
@@ -36,6 +29,12 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
     private ArrayList<Integer> idReserve;
     private ReservationBD reservationBD;
     private Context context;
+    private int selectedYear;
+    private int selectedMonth;
+    private int selectedDay;
+    private int selectedHour;
+    private int selectedMinute;
+
 
     public ReservasFragment() {
         // Required empty public constructor
@@ -162,7 +161,27 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
         botonConfirmarReserva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Agregar aquí la lógica para confirmar la reserva
+                Spinner typeOfReservationSpinner = dialog.findViewById(R.id.typeOfReservationSpinner);
+                EditText numberOfPeopleEditText = dialog.findViewById(R.id.numberOfPeopleEditText);
+                EditText selectTableEditText = dialog.findViewById(R.id.selectTableEditText);
+
+                String typeOfReservation = typeOfReservationSpinner.getSelectedItem().toString();
+                int numberOfPeople = Integer.parseInt(numberOfPeopleEditText.getText().toString());
+                int selectedTable = Integer.parseInt(selectTableEditText.getText().toString());
+
+                // Aquí obtienes la fecha y hora seleccionada
+                int year = selectedYear; // Obtén el año seleccionado
+                int month = selectedMonth; // Obtén el mes seleccionado
+                int day = selectedDay; // Obtén el día seleccionado
+                int hour = selectedHour; // Obtén la hora seleccionada
+                int minute = selectedMinute; // Obtén el minuto seleccionado
+
+                // Ahora creamos un objeto Reservation con los valores obtenidos
+                Reservation newReservation = new Reservation(0, numberOfPeople, "fecha_y_hora", "creada", typeOfReservation, selectedTable, "observacion", "Pendiente");
+
+                // Agregamos la reserva a la base de datos
+                reservationBD.agregar(newReservation);
+
                 dialog.dismiss();
             }
         });
@@ -177,6 +196,8 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
 
         dialog.show();
     }
+
+
 
 
     private void showDateTimePickerDialog() {

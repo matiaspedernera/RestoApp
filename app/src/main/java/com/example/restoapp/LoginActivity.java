@@ -18,7 +18,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
+
     private  Button btnRegistrar;
+
     private FirebaseAuth mAuth;
 
     @Override
@@ -33,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.IngresarBtn);
 
         btnRegistrar = findViewById(R.id.registrarBtn);
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,5 +75,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
     }
 }
