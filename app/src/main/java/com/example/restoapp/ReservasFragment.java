@@ -1,6 +1,5 @@
 package com.example.restoapp;
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -12,20 +11,14 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
-import com.example.restoapp.R;
-import com.example.restoapp.ReservationAdapter;
 import com.example.restoapp.controladores.ReservationBD;
-import com.example.restoapp.controladores.SelectListener;
 import com.example.restoapp.modelos.Reservation;
 
 import java.util.ArrayList;

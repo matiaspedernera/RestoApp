@@ -55,7 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
                     .commit();
         }
 
-        profileFragment.updateProfileImage(selectedImageUri);
+
     }
 }
 

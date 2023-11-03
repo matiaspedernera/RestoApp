@@ -15,9 +15,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#1E1F22"
         android:fontFamily="@font/libre_baskerville_bold"
-        android:text="@string/saludo"
-        android:textSize="36sp"
+        android:text="Hola Bienvenido !!"
+        android:textColor="#1E1F22"
+        android:textSize="30sp"
         android:textStyle="normal|bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,27 +31,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:text="@string/encuentra_platos_fav"
-        android:textColor="#757575"
+        android:textColor="#F16333"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView8" />
 
 
-
     <TextView
         android:id="@+id/textView10"
         style="@style/Widget.AppCompat.TextView"
-        android:fontFamily="@font/libre_baskerville_bold"
         android:layout_width="207dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/libre_baskerville_bold"
         android:text="@string/categorias"
+        android:textColor="#1E1F22"
         android:textSize="24sp"
         android:textStyle="normal|bold"
-        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView9"
-        app:layout_constraintVertical_bias="0.201" />
+        app:layout_constraintTop_toBottomOf="@id/textView9" />
 
 
     <ViewFlipper
@@ -78,6 +79,7 @@
         android:layout_marginTop="36dp"
         android:fontFamily="@font/libre_baskerville_bold"
         android:text="@string/explora"
+        android:textColor="#1E1F22"
         android:textSize="24sp"
         android:textStyle="normal|bold"
         app:layout_constraintStart_toStartOf="parent"
