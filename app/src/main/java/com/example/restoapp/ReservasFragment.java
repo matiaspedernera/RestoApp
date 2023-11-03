@@ -3,6 +3,7 @@ package com.example.restoapp;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,9 +37,14 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
     private int selectedMinute;
 
 
-    public ReservasFragment() {
-        // Required empty public constructor
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+        reservationBD = new ReservationBD(context);
+        Log.d("ReservasFragment", "reservationBD se inicializó correctamente");
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,6 +102,16 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_add_reservation);
 
+        Button selectDateTimeButton = dialog.findViewById(R.id.dateTimeButton);
+
+        selectDateTimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDateTimePickerDialog();
+            }
+        });
+
+
         dialog.getWindow().setLayout(
                 WindowManager.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.WRAP_CONTENT
@@ -148,7 +164,6 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
             }
         });
 
-        Button selectDateTimeButton = dialog.findViewById(R.id.dateTimeButton);
 
         selectDateTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,6 +184,10 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
                 int numberOfPeople = Integer.parseInt(numberOfPeopleEditText.getText().toString());
                 int selectedTable = Integer.parseInt(selectTableEditText.getText().toString());
 
+                Log.d("ReservasFragment", "typeOfReservation: " + typeOfReservation);
+                Log.d("ReservasFragment", "numberOfPeople: " + numberOfPeople);
+                Log.d("ReservasFragment", "selectedTable: " + selectedTable);
+
                 // Aquí obtienes la fecha y hora seleccionada
                 int year = selectedYear; // Obtén el año seleccionado
                 int month = selectedMonth; // Obtén el mes seleccionado
@@ -177,9 +196,17 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
                 int minute = selectedMinute; // Obtén el minuto seleccionado
 
                 // Ahora creamos un objeto Reservation con los valores obtenidos
-                Reservation newReservation = new Reservation(0, numberOfPeople, "fecha_y_hora", "creada", typeOfReservation, selectedTable, "observacion", "Pendiente");
+                String dateAndTime = String.format("%04d-%02d-%02d %02d:%02d", year, month, day, hour, minute);
+                Log.d("ReservasFragment", "Fecha seleccionada: " + selectedYear + "-" + selectedMonth + "-" + selectedDay);
+                Log.d("ReservasFragment", "Hora seleccionada: " + selectedHour + ":" + selectedMinute);
+
+                Reservation newReservation = new Reservation(0, numberOfPeople, dateAndTime,
+                        typeOfReservation,  "observacion",selectedTable, "Pendiente");
 
                 // Agregamos la reserva a la base de datos
+                Log.d("ReservasFragment", "Valores de newReservation: " + newReservation.toString());
+                Log.d("ReservasFragment", "newReservation es null: " + (newReservation == null));
+
                 reservationBD.agregar(newReservation);
 
                 dialog.dismiss();
@@ -208,6 +235,10 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
             public void onDateSelected(int year, int month, int day) {
                 // Aquí puedes manejar la fecha seleccionada
                 // Después de seleccionar la fecha, abre el fragmento de selección de hora.
+
+                selectedYear = year; // Asigna el año seleccionado
+                selectedMonth = month; // Asigna el mes seleccionado
+                selectedDay = day; // Asigna el día seleccionado
                 showTimePickerDialog();
             }
         };
@@ -222,17 +253,23 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
             @Override
             public void onTimeSelected(int hour, int minute) {
                 // Aquí puedes manejar la hora seleccionada
+                selectedHour = hour; // Asigna la hora seleccionada
+                selectedMinute = minute; // Asigna el minuto seleccionado
             }
         };
     }
 
     @Override
     public void onDateSelected(int year, int month, int dayOfMonth) {
-        // Manejar la fecha seleccionada
+        selectedYear = year;
+        selectedMonth = month;
+        selectedDay = dayOfMonth;
     }
 
     @Override
     public void onTimeSelected(int hour, int minute) {
-        // Manejar la hora seleccionada
+        selectedHour = hour;
+        selectedMinute = minute;
+
     }
 }

@@ -65,8 +65,7 @@ public class ReservationBD extends SQLiteOpenHelper implements IReservationBD {
                     cursor.getString(3),
                     cursor.getString(4),
                     cursor.getInt(5),
-                    cursor.getString(6),
-                    cursor.getString(7)
+                    cursor.getString(6)
             );
             cursor.close();
             return reservation;
@@ -91,8 +90,7 @@ public class ReservationBD extends SQLiteOpenHelper implements IReservationBD {
                         cursor.getString(3),
                         cursor.getString(4),
                         cursor.getInt(5),
-                        cursor.getString(6),
-                        cursor.getString(7)
+                        cursor.getString(6)
                 );
                 reserveList.add(reservation);
             } while (cursor.moveToNext());
