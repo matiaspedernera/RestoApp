@@ -36,6 +36,12 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
     private ArrayList<Integer> idReserve;
     private ReservationBD reservationBD;
     private Context context;
+    private int selectedYear;
+    private int selectedMonth;
+    private int selectedDay;
+    private int selectedHour;
+    private int selectedMinute;
+
 
     public ReservasFragment() {
         // Required empty public constructor
@@ -162,7 +168,27 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
         botonConfirmarReserva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Agregar aquí la lógica para confirmar la reserva
+                Spinner typeOfReservationSpinner = dialog.findViewById(R.id.typeOfReservationSpinner);
+                EditText numberOfPeopleEditText = dialog.findViewById(R.id.numberOfPeopleEditText);
+                EditText selectTableEditText = dialog.findViewById(R.id.selectTableEditText);
+
+                String typeOfReservation = typeOfReservationSpinner.getSelectedItem().toString();
+                int numberOfPeople = Integer.parseInt(numberOfPeopleEditText.getText().toString());
+                int selectedTable = Integer.parseInt(selectTableEditText.getText().toString());
+
+                // Aquí obtienes la fecha y hora seleccionada
+                int year = selectedYear; // Obtén el año seleccionado
+                int month = selectedMonth; // Obtén el mes seleccionado
+                int day = selectedDay; // Obtén el día seleccionado
+                int hour = selectedHour; // Obtén la hora seleccionada
+                int minute = selectedMinute; // Obtén el minuto seleccionado
+
+                // Ahora creamos un objeto Reservation con los valores obtenidos
+                Reservation newReservation = new Reservation(0, numberOfPeople, "fecha_y_hora", "creada", typeOfReservation, selectedTable, "observacion", "Pendiente");
+
+                // Agregamos la reserva a la base de datos
+                reservationBD.agregar(newReservation);
+
                 dialog.dismiss();
             }
         });
@@ -177,6 +203,8 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
 
         dialog.show();
     }
+
+
 
 
     private void showDateTimePickerDialog() {
