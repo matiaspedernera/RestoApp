@@ -25,7 +25,7 @@ import com.example.restoapp.modelos.Reservation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReservasFragment extends Fragment implements DatePickerFragment.DateSelectionListener, TimePickerFragment.TimeSelectionListener {
+public class ReservasFragment extends Fragment implements DatePickerFragment.DateSelectionListener, TimePickerFragment.TimeSelectionListener, ReservationAdapter.Listener {
     private ListView listView;
     private ArrayList<Integer> idReserve;
     private ReservationBD reservationBD;
@@ -60,6 +60,8 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
         idReserve = new ArrayList<Integer>();
         reservationList = new ArrayList<>();
         adapter = new ReservationAdapter(requireActivity(), R.layout.reservation_item, reservationList);
+        adapter.setListener(this);
+
         listView.setAdapter(adapter);
 
         fillListView();
@@ -211,7 +213,6 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
 
 
 
-
     private void showDateTimePickerDialog() {
         DatePickerFragment datePickerFragment = new DatePickerFragment();
         datePickerFragment.show(getParentFragmentManager(), "datePicker");
@@ -232,8 +233,12 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
     }
 
     private void actualizarListaReservas() {
-        // Actualiza la lista de reservas desde la base de datos y notifica al adaptador
         fillListView();
+    }
+
+    public void onReservationDeleted(int reservationId) {
+        reservationBD.borrar(reservationId);
+        actualizarListaReservas();
     }
 
     private void showTimePickerDialog() {
