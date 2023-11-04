@@ -7,15 +7,28 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.restoapp.controladores.ReservationBD;
 import com.example.restoapp.modelos.Reservation;
 import java.util.List;
 
 public class ReservationAdapter extends ArrayAdapter<Reservation> {
     private int layoutResourceId;
+    private ReservationBD reservationBD;
+    private Listener listener; // Listener para notificar eventos
+
+    public interface Listener {
+        void onReservationDeleted(int reservationId);
+    }
 
     public ReservationAdapter(Context context, int layoutResourceId, List<Reservation> data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
+        this.reservationBD = new ReservationBD(context);
+    }
+
+    // Método para establecer el listener
+    public void setListener(Listener listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -36,7 +49,7 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
             holder.textViewMesa = row.findViewById(R.id.textViewMesa);
             holder.textViewObservacion = row.findViewById(R.id.textViewObservacion);
             holder.textViewEstado = row.findViewById(R.id.textViewEstado);
-
+            holder.trash = row.findViewById(R.id.trash); // ImageView del ícono "trash"
 
             row.setTag(holder);
         } else {
@@ -53,11 +66,26 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
         holder.textViewObservacion.setText("Observacion: " + reservation.getObservations());
         holder.textViewEstado.setText("Estado: " + reservation.getStatus());
 
+        // Establece el clic del ícono "trash" para eliminar la reserva
+        holder.trash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int reservaId = reservation.getId();
+
+                // Llama a la función borrar en tu BD
+                reservationBD.borrar(reservaId);
+
+                if (listener != null) {
+                    listener.onReservationDeleted(reservaId);
+                }
+            }
+        });
 
         return row;
     }
 
     static class ReservationHolder {
+        public View trash;
         TextView textViewId;
         TextView textViewPersonas;
         TextView textViewFecha;
@@ -66,6 +94,6 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
         TextView textViewMesa;
         TextView textViewObservacion;
         TextView textViewEstado;
-
     }
 }
+
