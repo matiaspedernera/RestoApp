@@ -1,10 +1,13 @@
 package com.example.restoapp;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.restoapp.controladores.ReservationBD;
@@ -70,22 +73,39 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
         holder.trash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int reservaId = reservation.getId();
-
-                // Llama a la función borrar en tu BD
-                reservationBD.borrar(reservaId);
-
-                if (listener != null) {
-                    listener.onReservationDeleted(reservaId);
-                }
+                showDeleteConfirmationDialog(getContext(), reservation.getId());
             }
         });
 
         return row;
     }
 
+    private void showDeleteConfirmationDialog(Context context, final int reservationId) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Eliminar Reserva");
+        builder.setMessage("¿Está seguro de que desea eliminar esta reserva?");
+        builder.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Llama a la función borrar en tu BD
+                reservationBD.borrar(reservationId);
+
+                if (listener != null) {
+                    listener.onReservationDeleted(reservationId);
+                }
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // No hagas nada, simplemente cierra el diálogo
+            }
+        });
+        builder.create().show();
+    }
+
     static class ReservationHolder {
-        public View trash;
+        public ImageView trash;
         TextView textViewId;
         TextView textViewPersonas;
         TextView textViewFecha;

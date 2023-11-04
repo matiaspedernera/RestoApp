@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#C8BABA"
     android:backgroundTint="#DFDCDC"
+    android:textAlignment="center"
     tools:context=".ReservasFragment">
+
+    <TextView
+        android:id="@+id/noReservationsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal"
+        android:layout_marginBottom="100dp"
+        android:text="@string/no_tienes_reservas"
+        android:textAlignment="center"
+        android:textColor="#454545"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.265" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -41,10 +60,12 @@
             android:text="@string/subtitle"
             android:textSize="14sp" />
 
+
         <ListView
             android:id="@+id/reservation_list"
             android:layout_width="352dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
     </LinearLayout>
 
     <Button
