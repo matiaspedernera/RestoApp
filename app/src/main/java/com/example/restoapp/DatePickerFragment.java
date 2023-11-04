@@ -15,6 +15,7 @@ public class DatePickerFragment extends DialogFragment {
 
     public interface DateSelectionListener {
         void onDateSelected(int year, int month, int day);
+
     }
 
     @Override

@@ -10,10 +10,17 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 public class PhotoChangeActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_PICK = 1;
     private ImageView imageselect;
+
+
+    private  ImageView btn_atras;
+    private Button confirmarBtn;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +37,13 @@ public class PhotoChangeActivity extends AppCompatActivity {
         ImageView imageView8 = findViewById(R.id.imageView8);
         ImageView imageView9 = findViewById(R.id.imageView9);
         ImageView imageView10 = findViewById(R.id.imageView10);
+
+
+
+
+        btn_atras = findViewById(R.id.imageButton2);
+        confirmarBtn = findViewById(R.id.confirmarBtn);
+
 
         // Configura un OnClickListener para imageView3
         imageView3.setOnClickListener(new View.OnClickListener() {
@@ -111,10 +125,15 @@ public class PhotoChangeActivity extends AppCompatActivity {
                     Uri selectedImageUri = Uri.parse("android.resource://com.example.restoapp/drawable/"
                             + getResources().getResourceEntryName(imageselect.getId()));
 
-                    // Envía la URI de la imagen a la actividad ProfileActivity
-                    Intent intent = new Intent(PhotoChangeActivity.this, ProfileActivity.class);
-                    intent.putExtra("imageUri", selectedImageUri.toString());
-                    startActivity(intent);
+
+                    // Envía la URI de la imagen de regreso al fragmento ProfileFragment
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("imageUri", selectedImageUri.toString());
+                    setResult(RESULT_OK, returnIntent);
+
+                    // Cierra la actividad actual
+                    finish();
+
                 }
             }
         });

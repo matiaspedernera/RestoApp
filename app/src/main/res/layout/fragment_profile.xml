@@ -6,7 +6,7 @@
     android:background="#C8BABA"
     android:backgroundTint="#DFDCDC"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".PerfilFragment">
+    tools:context=".ProfileFragment">
 
     <TextView
         android:id="@+id/textView4"
@@ -54,11 +54,11 @@
         android:layout_width="142dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="#FFFFFF"
-        android:text="@string/cambiar_foto"
         android:background="@drawable/rounded_button_2"
+        android:backgroundTint="#F06333"
+        android:text="@string/cambiar_foto"
         android:textAllCaps="false"
-        android:textColor="#000011"
+        android:textColor="#FEFEFE"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,19 +77,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/change_image_button" />
 
-
-    <TextView
-        android:id="@+id/textViewEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:layout_marginTop="5dp"
-        android:textColor="#333333"
-        android:text="@string/dni_ejemplo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewName2"
-        />
 
     <EditText
         android:id="@+id/editTextText"
@@ -111,12 +98,13 @@
         android:id="@+id/editTextText2"
         android:layout_width="339dp"
         android:layout_height="48dp"
-        android:paddingHorizontal="7dp"
+        android:layout_marginTop="12dp"
         android:autofillHints="name"
         android:background="@drawable/rounded_button_2"
         android:ems="10"
-        android:inputType="text"
         android:hint="@string/apellido"
+        android:inputType="text"
+        android:paddingHorizontal="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextText" />
