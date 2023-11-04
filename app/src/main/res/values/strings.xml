@@ -47,16 +47,15 @@
     <string name="select_table">Seleccionar mesa</string>
     <string name="reservation_comment">Escribe alguna observación...</string>
 
-        <string-array name="type_of_reservations">
-            <item>Cita</item>
-            <item>Cumpleaños</item>
-            <item>Negocios</item>
-            <item>Familiar</item>
-            <item>Otro</item>
+    <string-array name="type_of_reservations">
+        <item>Cita</item>
+        <item>Cumpleaños</item>
+        <item>Negocios</item>
+        <item>Familiar</item>
+        <item>Otro</item>
 
-            <!-- Agrega más opciones según sea necesario -->
-        </string-array>
-
+        <!-- Agrega más opciones según sea necesario -->
+    </string-array>
 
 
     //PERFIL
