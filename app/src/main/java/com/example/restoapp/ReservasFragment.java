@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ReservasFragment extends Fragment implements DatePickerFragment.DateSelectionListener, TimePickerFragment.TimeSelectionListener{
+public class ReservasFragment extends Fragment implements DatePickerFragment.DateSelectionListener, TimePickerFragment.TimeSelectionListener, ReservationAdapter.Listener {
     private ListView listView;
     private ArrayList<Integer> idReserve;
     private ReservationBD reservationBD;
@@ -36,30 +36,38 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
     private int selectedDay;
     private int selectedHour;
     private int selectedMinute;
-
-
+    private ReservationAdapter adapter;
+    private List<Reservation> reservationList;
+    private TextView noReservationsText;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context = context;
         reservationBD = new ReservationBD(context);
-        Log.d("ReservasFragment", "reservationBD se inicializó correctamente");
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = requireContext();
         reservationBD = new ReservationBD(context);
+        reservationList = new ArrayList<>();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reservas, container, false);
         listView = view.findViewById(R.id.reservation_list);
+        noReservationsText = view.findViewById(R.id.noReservationsText);
 
-        fillListView(view);
+        idReserve = new ArrayList<Integer>();
+        reservationList = new ArrayList<>();
+        adapter = new ReservationAdapter(requireActivity(), R.layout.reservation_item, reservationList);
+        adapter.setListener(this);
+
+        listView.setAdapter(adapter);
+
+        fillListView();
 
         Button botonAgregarReserva = view.findViewById(R.id.botonAgregarReserva);
         botonAgregarReserva.setOnClickListener(new View.OnClickListener() {
@@ -72,9 +80,12 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
         return view;
     }
 
-    private void fillListView(View view) {
-        idReserve = new ArrayList<Integer>();
+    private void fillListView() {
+        reservationList.clear();
+        reservationList.addAll(reservationBD.lista());
+        adapter.notifyDataSetChanged();
 
+//<<<<<<< HEAD
         List<Reservation> reservationList = reservationBD.lista();
 
         ReservationAdapter adapter = new ReservationAdapter(requireActivity(), R.layout.reservation_item, reservationList);
@@ -96,6 +107,15 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
                 bolsa.putString("status", reservation.getStatus());
             }
         });
+//=======
+        if (reservationList.isEmpty()) {
+            noReservationsText.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.GONE);
+        } else {
+            noReservationsText.setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
+        }
+//>>>>>>> 37d0a8bb565a20c7c95063bbde2db69ac6c3f72e
     }
 
     private void mostrarDialogAgregarReserva() {
@@ -190,14 +210,12 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
                 Log.d("ReservasFragment", "numberOfPeople: " + numberOfPeople);
                 Log.d("ReservasFragment", "selectedTable: " + selectedTable);
 
-                // Aquí obtienes la fecha y hora seleccionada
-                int year = selectedYear; // Obtén el año seleccionado
-                int month = selectedMonth; // Obtén el mes seleccionado
-                int day = selectedDay; // Obtén el día seleccionado
-                int hour = selectedHour; // Obtén la hora seleccionada
-                int minute = selectedMinute; // Obtén el minuto seleccionado
+                int year = selectedYear;
+                int month = selectedMonth;
+                int day = selectedDay;
+                int hour = selectedHour;
+                int minute = selectedMinute;
 
-                // Ahora creamos un objeto Reservation con los valores obtenidos
                 String dateAndTime = String.format("%04d-%02d-%02d %02d:%02d", year, month, day, hour, minute);
                 Log.d("ReservasFragment", "Fecha seleccionada: " + selectedYear + "-" + selectedMonth + "-" + selectedDay);
                 Log.d("ReservasFragment", "Hora seleccionada: " + selectedHour + ":" + selectedMinute);
@@ -206,12 +224,11 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
                 Reservation newReservation = new Reservation(0, numberOfPeople, dateAndTime,createdDate,
                         typeOfReservation,  selectedTable,"observacion", "Pendiente");
 
-                // Agregamos la reserva a la base de datos
                 Log.d("ReservasFragment", "Valores de newReservation: " + newReservation.toString());
                 Log.d("ReservasFragment", "newReservation es null: " + (newReservation == null));
 
                 reservationBD.agregar(newReservation);
-
+                actualizarListaReservas();
                 dialog.dismiss();
             }
         });
@@ -229,24 +246,30 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
 
 
 
-
     private void showDateTimePickerDialog() {
         DatePickerFragment datePickerFragment = new DatePickerFragment();
         datePickerFragment.show(getParentFragmentManager(), "datePicker");
         datePickerFragment.dateListener = new DatePickerFragment.DateSelectionListener() {
             @Override
             public void onDateSelected(int year, int month, int day) {
-                // Aquí puedes manejar la fecha seleccionada
-                // Después de seleccionar la fecha, abre el fragmento de selección de hora.
 
-                selectedYear = year; // Asigna el año seleccionado
-                selectedMonth = month; // Asigna el mes seleccionado
-                selectedDay = day; // Asigna el día seleccionado
+                selectedYear = year;
+                selectedMonth = month;
+                selectedDay = day;
                 showTimePickerDialog();
             }
         };
 
 
+    }
+
+    private void actualizarListaReservas() {
+        fillListView();
+    }
+
+    public void onReservationDeleted(int reservationId) {
+        reservationBD.borrar(reservationId);
+        actualizarListaReservas();
     }
 
     private void showTimePickerDialog() {
@@ -255,9 +278,8 @@ public class ReservasFragment extends Fragment implements DatePickerFragment.Dat
         timePickerFragment.timeListener = new TimePickerFragment.TimeSelectionListener() {
             @Override
             public void onTimeSelected(int hour, int minute) {
-                // Aquí puedes manejar la hora seleccionada
-                selectedHour = hour; // Asigna la hora seleccionada
-                selectedMinute = minute; // Asigna el minuto seleccionado
+                selectedHour = hour;
+                selectedMinute = minute;
             }
         };
     }

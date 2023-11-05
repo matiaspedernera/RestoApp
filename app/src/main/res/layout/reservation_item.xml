@@ -1,27 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><!-- res/layout/reservation_item.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
     android:background="@drawable/rounded_background"
-    android:orientation="vertical"
     android:padding="16dp">
 
-
-    <TextView
-        android:id="@+id/textViewId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="16sp" />
-
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_background"
+        android:orientation="vertical"
+        android:padding="16dp">
+
 
         <TextView
-            android:id="@+id/textViewPersonas"
+            android:id="@+id/textViewId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="106dp"
@@ -29,54 +27,83 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewPersonas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:text="Personas: "
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fecha: "
+                android:textSize="16sp" />
+        </LinearLayout>
+
         <TextView
-            android:id="@+id/textViewFecha"
+            android:id="@+id/textViewCreada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enviada: "
+
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textViewTipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Fecha: "
             android:textColor="@color/black"
             android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textViewMesa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mesa: "
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textViewObservacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Observacion: "
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textViewEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado: "
+            android:textSize="16sp" />
+
+
+        <!-- Agrega más vistas para mostrar otros detalles de la reserva -->
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewCreada"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enviada: "
-        android:textColor="@color/black"
-        android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/textViewTipo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tipo: "
-        android:textColor="@color/black"
-        android:textSize="16sp" />
-    <TextView
-        android:id="@+id/textViewMesa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mesa: "
-        android:textColor="@color/black"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/textViewObservacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Observacion: "
-        android:textColor="@color/black"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/textViewEstado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Estado: "
-        android:textColor="@color/black"
-        android:textSize="16sp" />
 
     <!-- Agrega más vistas para mostrar otros detalles de la reserva -->
 
-</LinearLayout>
+
+    <ImageView
+        android:id="@+id/trash"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|end"
+        android:contentDescription="@string/elimina_reserva"
+        android:onClick="onReservationDeleted"
+        android:src="@drawable/trash"
+        tools:ignore="TouchTargetSizeCheck" />
+
+</FrameLayout>
+

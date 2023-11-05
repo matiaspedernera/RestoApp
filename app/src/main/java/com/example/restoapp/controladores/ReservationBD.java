@@ -137,6 +137,18 @@ public class ReservationBD extends SQLiteOpenHelper implements IReservationBD {
 
     @Override
     public void borrar(int id) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        String whereClause = "_id = ?";
+        String[] whereArgs = {String.valueOf(id)};
 
+        int deletedRows = database.delete(TABLE_RESERVATIONS, whereClause, whereArgs);
+        database.close();
+
+        if (deletedRows > 0) {
+            Log.d("Database", "Reserva eliminada con éxito. ID: " + id);
+        } else {
+            Log.e("Database", "Error al eliminar la reserva de la base de datos. ID: " + id);
+        }
     }
+
 }

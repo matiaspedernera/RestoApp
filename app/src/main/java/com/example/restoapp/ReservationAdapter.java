@@ -1,21 +1,37 @@
 package com.example.restoapp;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.restoapp.controladores.ReservationBD;
 import com.example.restoapp.modelos.Reservation;
 import java.util.List;
 
 public class ReservationAdapter extends ArrayAdapter<Reservation> {
     private int layoutResourceId;
+    private ReservationBD reservationBD;
+    private Listener listener; // Listener para notificar eventos
+
+    public interface Listener {
+        void onReservationDeleted(int reservationId);
+    }
 
     public ReservationAdapter(Context context, int layoutResourceId, List<Reservation> data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
+        this.reservationBD = new ReservationBD(context);
+    }
+
+    // Método para establecer el listener
+    public void setListener(Listener listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -36,7 +52,7 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
             holder.textViewMesa = row.findViewById(R.id.textViewMesa);
             holder.textViewObservacion = row.findViewById(R.id.textViewObservacion);
             holder.textViewEstado = row.findViewById(R.id.textViewEstado);
-
+            holder.trash = row.findViewById(R.id.trash); // ImageView del ícono "trash"
 
             row.setTag(holder);
         } else {
@@ -53,11 +69,43 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
         holder.textViewObservacion.setText("Observacion: " + reservation.getObservations());
         holder.textViewEstado.setText("Estado: " + reservation.getStatus());
 
+        // Establece el clic del ícono "trash" para eliminar la reserva
+        holder.trash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDeleteConfirmationDialog(getContext(), reservation.getId());
+            }
+        });
 
         return row;
     }
 
+    private void showDeleteConfirmationDialog(Context context, final int reservationId) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Eliminar Reserva");
+        builder.setMessage("¿Está seguro de que desea eliminar esta reserva?");
+        builder.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Llama a la función borrar en tu BD
+                reservationBD.borrar(reservationId);
+
+                if (listener != null) {
+                    listener.onReservationDeleted(reservationId);
+                }
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // No hagas nada, simplemente cierra el diálogo
+            }
+        });
+        builder.create().show();
+    }
+
     static class ReservationHolder {
+        public ImageView trash;
         TextView textViewId;
         TextView textViewPersonas;
         TextView textViewFecha;
@@ -66,6 +114,6 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
         TextView textViewMesa;
         TextView textViewObservacion;
         TextView textViewEstado;
-
     }
 }
+
