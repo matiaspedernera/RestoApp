@@ -12,7 +12,8 @@ public class Reservation {
     private String observations;
     private String status;
 
-    public Reservation(int id, int number_of_people, String dateAndTime,  Date created, String type, int table, String observations, String status) {
+    public Reservation(int id, int number_of_people, String dateAndTime,  Date created,
+                       String type, int table, String observations, String status) {
         this.id = id;
         this.number_of_people = number_of_people;
         this.dateAndTime = dateAndTime;
