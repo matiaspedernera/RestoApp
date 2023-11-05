@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- res/layout/reservation_item.xml -->
+<?xml version="1.0" encoding="utf-8"?><!-- res/layout/reservation_item.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -27,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="106dp"
             android:text="Personas: "
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <TextView
@@ -34,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Fecha: "
+            android:textColor="@color/black"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -42,21 +43,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enviada: "
+        android:textColor="@color/black"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textViewTipo"
-        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tipo: "
+        android:textColor="@color/black"
         android:textSize="16sp" />
-
     <TextView
         android:id="@+id/textViewMesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mesa: "
+        android:textColor="@color/black"
         android:textSize="16sp" />
 
     <TextView
@@ -64,6 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Observacion: "
+        android:textColor="@color/black"
         android:textSize="16sp" />
 
     <TextView
@@ -71,6 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Estado: "
+        android:textColor="@color/black"
         android:textSize="16sp" />
 
     <!-- Agrega más vistas para mostrar otros detalles de la reserva -->
