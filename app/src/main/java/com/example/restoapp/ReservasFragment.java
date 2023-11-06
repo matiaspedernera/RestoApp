@@ -213,6 +213,7 @@
                     Log.d("ReservasFragment", "numberOfPeople: " + numberOfPeople);
                     Log.d("ReservasFragment", "selectedTable: " + selectedTable);
 
+
                     int year = selectedYear;
                     int month = selectedMonth;
                     int day = selectedDay;
