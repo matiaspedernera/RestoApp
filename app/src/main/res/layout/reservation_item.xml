@@ -6,13 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
+    android:backgroundTint="#FCAA6D"
     android:background="@drawable/rounded_background"
     android:padding="16dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="#FCD46D"
         android:background="@drawable/rounded_background"
         android:orientation="vertical"
         android:padding="16dp">
@@ -23,14 +25,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="106dp"
-            android:text="Personas: "
+            android:text="@string/id"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textViewPersonas"
@@ -38,52 +41,58 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="Personas: "
-                android:textSize="16sp" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/textViewFecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fecha: "
-                android:textSize="16sp" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textViewCreada"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enviada: "
-
-            android:textSize="16sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/textViewCreada"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Enviada: "-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="16sp" />-->
 
         <TextView
             android:id="@+id/textViewTipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fecha: "
+            android:text="@string/tipo"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textViewMesa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mesa: "
-            android:textSize="16sp" />
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textViewObservacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Observacion: "
-            android:textSize="16sp" />
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textViewEstado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Estado: "
-            android:textSize="16sp" />
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
 
         <!-- Agrega más vistas para mostrar otros detalles de la reserva -->

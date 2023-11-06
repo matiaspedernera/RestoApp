@@ -59,13 +59,12 @@ public class ReservationBD extends SQLiteOpenHelper implements IReservationBD {
 
         if (cursor != null) {
             cursor.moveToFirst();
-            long createdMillis = cursor.getLong(3); // Suponiendo que la fecha está en la columna 3
-            Date createdDate = new Date(createdMillis);
+
             Reservation reservation = new Reservation(
                     cursor.getInt(0),
                     cursor.getInt(1),
                     cursor.getString(2),
-                    createdDate,
+                    new Date (cursor.getLong(3)),
                     cursor.getString(4),
                     cursor.getInt(5),
                     cursor.getString(6),

@@ -88,7 +88,7 @@
 
             List<Reservation> reservationList = reservationBD.lista();
 
-            ReservationAdapter adapter = new ReservationAdapter(requireActivity(), R.layout.reservation_item, reservationList);
+            //ReservationAdapter adapter = new ReservationAdapter(requireActivity(), R.layout.reservation_item, reservationList);
 
             listView.setAdapter(adapter);
 
@@ -212,6 +212,7 @@
                     Log.d("ReservasFragment", "typeOfReservation: " + typeOfReservation);
                     Log.d("ReservasFragment", "numberOfPeople: " + numberOfPeople);
                     Log.d("ReservasFragment", "selectedTable: " + selectedTable);
+
 
                     int year = selectedYear;
                     int month = selectedMonth;
