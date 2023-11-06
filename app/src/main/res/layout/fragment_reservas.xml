@@ -47,7 +47,7 @@
             android:fontFamily="@font/libre_baskerville_bold"
             android:text="@string/title"
             android:textColor="#040C22"
-            android:textSize="34sp"
+            android:textSize="38sp"
             tools:ignore="MissingConstraints"
             tools:text="@string/title" />
 
@@ -57,8 +57,9 @@
             android:layout_height="29dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
+            android:textStyle="italic"
             android:text="@string/subtitle"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
 
         <ListView

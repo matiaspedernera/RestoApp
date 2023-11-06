@@ -47,16 +47,15 @@
     <string name="select_table">Seleccionar mesa</string>
     <string name="reservation_comment">Escribe alguna observación...</string>
 
-        <string-array name="type_of_reservations">
-            <item>Cita</item>
-            <item>Cumpleaños</item>
-            <item>Negocios</item>
-            <item>Familiar</item>
-            <item>Otro</item>
+    <string-array name="type_of_reservations">
+        <item>Cita</item>
+        <item>Cumpleaños</item>
+        <item>Negocios</item>
+        <item>Familiar</item>
+        <item>Otro</item>
 
-            <!-- Agrega más opciones según sea necesario -->
-        </string-array>
-
+        <!-- Agrega más opciones según sea necesario -->
+    </string-array>
 
 
     //PERFIL
@@ -99,5 +98,8 @@
     <string name="medios_pago">Medios de pago</string>
     <string name="hola_bienvenido">Hola Bienvenido !!</string>
     <string name="no_tienes_reservas">Nada por aquí todavía. ¿Te gustaría agregar una reserva</string>
+    <string name="elimina_reserva">Eliminar tu reserva</string>
+    <string name="id">Id:</string>
+    <string name="tipo">Tipo:</string>
 
 </resources>
