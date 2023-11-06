@@ -5,7 +5,8 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:icon="@drawable/ic_hogar"
-        android:title="Inicio"/>
+        android:title="Inicio"
+        />
 
     <item
         android:id="@+id/page_reservas"

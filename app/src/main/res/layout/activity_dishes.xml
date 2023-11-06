@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/bottomNavigationView"
         app:menu="@menu/menu_bottom"
+        app:backgroundTint="#F4764B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
