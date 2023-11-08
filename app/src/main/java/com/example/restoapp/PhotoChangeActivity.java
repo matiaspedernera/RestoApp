@@ -1,6 +1,7 @@
 package com.example.restoapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -10,17 +11,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
+
+import java.io.IOException;
 
 public class PhotoChangeActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_PICK = 1;
     private ImageView imageselect;
+    private Uri selectedImageUri;
 
-
-    private  ImageView btn_atras;
+    private ImageView btn_atras;
     private Button confirmarBtn;
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,12 +38,8 @@ public class PhotoChangeActivity extends AppCompatActivity {
         ImageView imageView9 = findViewById(R.id.imageView9);
         ImageView imageView10 = findViewById(R.id.imageView10);
 
-
-
-
         btn_atras = findViewById(R.id.imageButton2);
         confirmarBtn = findViewById(R.id.confirmarBtn);
-
 
         // Configura un OnClickListener para imageView3
         imageView3.setOnClickListener(new View.OnClickListener() {
@@ -115,25 +111,15 @@ public class PhotoChangeActivity extends AppCompatActivity {
             }
         });
 
-        Button confirmarBtn = findViewById(R.id.confirmarBtn);
-
         confirmarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (imageselect.getDrawable() != null) {
-                    // Obtén la URI de la imagen seleccionada en imageselect
-                    Uri selectedImageUri = Uri.parse("android.resource://com.example.restoapp/drawable/"
-                            + getResources().getResourceEntryName(imageselect.getId()));
-
-
-                    // Envía la URI de la imagen de regreso al fragmento ProfileFragment
+                if (selectedImageUri != null) {
+                    // Envía la URI de la imagen de regreso a la actividad anterior (ProfileFragment)
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra("imageUri", selectedImageUri.toString());
                     setResult(RESULT_OK, returnIntent);
-
-                    // Cierra la actividad actual
-                    finish();
-
+                    finish(); // Cierra la actividad actual
                 }
             }
         });
@@ -144,10 +130,19 @@ public class PhotoChangeActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_IMAGE_PICK && resultCode == RESULT_OK && data != null) {
-            Uri selectedImageUri = data.getData();
+            selectedImageUri = data.getData();
 
-            // Muestra la imagen seleccionada en el ImageView "imageselect"
-            imageselect.setImageURI(selectedImageUri);
+            if (selectedImageUri != null) {
+                try {
+                    // Utiliza el método MediaStore.Images.Media.getBitmap para decodificar la imagen
+                    Bitmap selectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+
+                    // Establece la imagen decodificada en el ImageView "imageselect"
+                    imageselect.setImageBitmap(selectedImage);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
