@@ -1,6 +1,7 @@
 package com.example.restoapp;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -12,8 +13,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.SharedPreferences;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +28,23 @@ public class ProfileFragment extends Fragment {
     private TextView textViewEmail;
     private Button botonCerrarSesion;
     private SharedPreferences sharedPreferences;
+    private Uri selectedImageUri;
+
+    private final ActivityResultLauncher<Intent> startPhotoChangeActivity =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    result -> {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            Intent data = result.getData();
+                            if (data != null) {
+                                // Obtiene la URI de la imagen seleccionada desde PhotoChangeActivity
+                                String newImageUriString = data.getStringExtra("imageUri");
+                                Uri newImageUri = Uri.parse(newImageUriString);
+
+                                // Llama al método para actualizar la imagen de perfil
+                                updateProfileImage(newImageUri);
+                            }
+                        }
+                    });
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,50 +57,32 @@ public class ProfileFragment extends Fragment {
         sharedPreferences = requireActivity().getSharedPreferences("user_data", Context.MODE_PRIVATE);
 
         botonCerrarSesion.setOnClickListener(v -> {
-            // Cierra la sesión actual del usuario
             FirebaseAuth.getInstance().signOut();
 
-            // Limpia los datos de usuario almacenados en SharedPreferences
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.clear();
             editor.apply();
 
-            // Redirige a la pantalla de inicio de sesión o a donde desees
             Intent intent = new Intent(requireContext(), LoginActivity.class);
             startActivity(intent);
-            requireActivity().finish(); // Opcional, para cerrar la actividad actual
+            requireActivity().finish();
         });
 
-        // Muestra el correo electrónico del usuario si está autenticado
         showUserData();
 
-        // Botón para cambiar la imagen de perfil
         Button changeImageButton = view.findViewById(R.id.change_image_button);
 
         changeImageButton.setOnClickListener(v -> {
-            // Crea un Intent para abrir la actividad PhotoChangeActivity
             Intent changeImageIntent = new Intent(requireContext(), PhotoChangeActivity.class);
-
-            // Inicia la actividad PhotoChangeActivity para cambiar la imagen de perfil
-            startActivityForResult(changeImageIntent, REQUEST_IMAGE_CHANGE);
+            startPhotoChangeActivity.launch(changeImageIntent);
         });
 
         return view;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == REQUEST_IMAGE_CHANGE && resultCode == AppCompatActivity.RESULT_OK && data != null) {
-            // Obtiene la URI de la imagen seleccionada desde PhotoChangeActivity
-            Uri selectedImageUri = data.getData();
-
-            // Muestra la imagen en profileImageView
-            profileImageView.setImageURI(selectedImageUri);
-
-            // Puedes hacer más con la URI de la imagen, como guardarla en SharedPreferences
-            // o en otro lugar según tus necesidades.
+    public void updateProfileImage(Uri newImageUri) {
+        if (newImageUri != null) {
+            profileImageView.setImageURI(newImageUri);
         }
     }
 
@@ -104,4 +106,3 @@ public class ProfileFragment extends Fragment {
         }
     }
 }
-
