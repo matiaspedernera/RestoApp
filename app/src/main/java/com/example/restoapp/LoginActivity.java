@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = etUsername.getText().toString();
+                String username = etUsername.getText().toString().trim();
                 String password = etPassword.getText().toString();
 
                 if (username.isEmpty() || password.isEmpty()) {
